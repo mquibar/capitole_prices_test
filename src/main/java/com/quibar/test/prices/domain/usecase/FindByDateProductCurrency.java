@@ -14,8 +14,8 @@ public class FindByDateProductCurrency {
 		this.priceDao = priceDao;
 	}
 
-	public Price execute(LocalDateTime applicationDate, long productId, String currency){
-		return priceDao.findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndCurrOrderByPriorityDesc(applicationDate, applicationDate, productId, currency)
+	public Price execute(LocalDateTime applicationDate, long productId, int brandId){
+		return priceDao.findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(applicationDate, applicationDate, productId, brandId)
 				.stream()
 				.findFirst()
 				.orElseThrow(() -> new PriceNotFoundException("Price not found for those parameters"));

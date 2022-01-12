@@ -12,18 +12,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.quibar.test.prices.domain.model.Product;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "price")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class PriceEntity {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "brand_id", referencedColumnName = "id")
@@ -40,7 +44,7 @@ public class PriceEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	private Product poduct;
+	private ProductEntity product;
 	
 	@Column
 	private short priority;

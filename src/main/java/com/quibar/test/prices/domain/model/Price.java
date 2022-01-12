@@ -10,7 +10,7 @@ public class Price {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private int priceList;
-	private Product poduct;
+	private Product product;
 	private short priority;
 	private BigDecimal value;
 	private String curr;
@@ -66,13 +66,13 @@ public class Price {
 	}
 
 
-	public Product getPoduct() {
-		return poduct;
+	public Product getProduct() {
+		return product;
 	}
 
 
-	public void setPoduct(Product poduct) {
-		this.poduct = poduct;
+	public void setProduct(Product poduct) {
+		this.product = poduct;
 	}
 
 
@@ -138,8 +138,8 @@ public class Price {
 			return this;
 		}
 		
-		public PriceBuilder poduct(Product poduct) {
-			this.price.poduct = poduct;
+		public PriceBuilder product(Product product) {
+			this.price.product = product;
 			return this;
 		}
 		

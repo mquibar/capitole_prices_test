@@ -9,5 +9,5 @@ public interface PriceDao {
 
 	Price save(Price price);
 	
-	List<Price> findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndCurrOrderByPriorityDesc(LocalDateTime startDate, LocalDateTime endDate, long product, String curr);
+	List<Price> findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(LocalDateTime startDate, LocalDateTime endDate, long product, int brandId);
 }
