@@ -1,5 +1,7 @@
 package com.quibar.test.prices.infra.mappers;
 
+import org.springframework.stereotype.Component;
+
 import com.quibar.test.prices.domain.model.Brand;
 import com.quibar.test.prices.domain.model.Price;
 import com.quibar.test.prices.domain.model.Product;
@@ -7,6 +9,7 @@ import com.quibar.test.prices.infra.entity.BrandEntity;
 import com.quibar.test.prices.infra.entity.PriceEntity;
 import com.quibar.test.prices.infra.entity.ProductEntity;
 
+@Component
 public class PriceEntityMapper {
 
 	public PriceEntity domainTo(Price price) {
