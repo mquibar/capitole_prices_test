@@ -3,7 +3,7 @@ package com.quibar.test.prices.domain.usecase;
 import java.time.LocalDateTime;
 
 import com.quibar.test.prices.domain.dao.PriceDao;
-import com.quibar.test.prices.domain.exceptions.PriceNotFoundException;
+import com.quibar.test.prices.domain.exceptions.DataNotFoundException;
 import com.quibar.test.prices.domain.model.Price;
 
 public class FindByDateProductCurrency {
@@ -18,6 +18,6 @@ public class FindByDateProductCurrency {
 		return priceDao.findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(applicationDate, applicationDate, productId, brandId)
 				.stream()
 				.findFirst()
-				.orElseThrow(() -> new PriceNotFoundException("Price not found for those parameters"));
+				.orElseThrow(() -> new DataNotFoundException("Price not found for those parameters"));
 	}
 }
