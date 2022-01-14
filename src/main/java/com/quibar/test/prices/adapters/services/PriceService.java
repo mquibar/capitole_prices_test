@@ -1,9 +1,11 @@
 package com.quibar.test.prices.adapters.services;
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Service;
 
-import com.quibar.test.prices.adapters.dto.FindPriceRequest;
-import com.quibar.test.prices.adapters.dto.FindPriceResponse;
+import com.quibar.test.prices.adapters.dto.FindPriceDto;
+import com.quibar.test.prices.adapters.dto.PriceDto;
 import com.quibar.test.prices.domain.usecase.FindByDateProductCurrency;
 
 import lombok.RequiredArgsConstructor;
@@ -14,9 +16,10 @@ public class PriceService {
 
 	private final FindByDateProductCurrency findByDateProductCurrency;
 	
-	public FindPriceResponse findPrice (FindPriceRequest request) {
-		var price = findByDateProductCurrency.execute(request.getApplicationDate(), request.getProductId(), request.getBrandId());
-		return FindPriceResponse.builder()
+	public PriceDto findPrice (FindPriceDto request) {
+		var date = LocalDateTime.parse(request.getApplicationDate());
+		var price = findByDateProductCurrency.execute(date, request.getProductId(), request.getBrandId());
+		return PriceDto.builder()
 				.product(price.getProduct().getId())
 				.brand(price.getBrand().getId())
 				.priceList(price.getPriceList())

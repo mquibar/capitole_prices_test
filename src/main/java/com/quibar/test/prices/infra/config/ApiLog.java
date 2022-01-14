@@ -21,7 +21,10 @@ public class ApiLog {
 	@Before("inController()")
 	public void apiRequestLog(JoinPoint point) {
 		var log = point.getSignature().getName()
-					.concat(" request: {} ");
+					.concat(" request:");
+		for (Object obj : point.getArgs()) {
+			log =log.concat(" {},");
+		}
 		LogManager.getLogger(point.getSignature().getDeclaringTypeName()).info(log, point.getArgs());
 	}
 	

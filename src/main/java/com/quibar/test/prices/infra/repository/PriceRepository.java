@@ -11,6 +11,6 @@ import com.quibar.test.prices.infra.entity.PriceEntity;
 @Repository
 public interface PriceRepository extends JpaRepository<PriceEntity, Long> {
 
-	List<PriceEntity> findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(LocalDateTime startDate, LocalDateTime endDate, long productId, int brandId);
+	List<PriceEntity> findByStartDateLessThanEqualAndEndDateGreaterThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(LocalDateTime startDate, LocalDateTime endDate, long productId, int brandId);
 	
 }

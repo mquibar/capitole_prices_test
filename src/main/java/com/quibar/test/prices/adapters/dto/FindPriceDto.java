@@ -1,13 +1,12 @@
 package com.quibar.test.prices.adapters.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.Data;
 
 @Data
-public class FindPriceRequest {
+public class FindPriceDto {
 
-	private LocalDateTime applicationDate;
+	private String applicationDate;
 	private long productId;
 	private int brandId;
+		
 }

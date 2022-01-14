@@ -27,9 +27,9 @@ public class PriceDaoImp implements PriceDao {
 	}
 
 	@Override
-	public List<Price> findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(
+	public List<Price> findByStartDateLessThanEqualAndEndDateGreaterThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(
 			LocalDateTime startDate, LocalDateTime endDate, long product, int brandId) {
-		return repository.findByStartDateGreaterThanEqualAndEndDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(startDate, endDate, product, brandId)
+		return repository.findByStartDateLessThanEqualAndEndDateGreaterThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(startDate, endDate, product, brandId)
 				.stream()
 				.map(mapper::toDomain)
 				.collect(Collectors.toList());

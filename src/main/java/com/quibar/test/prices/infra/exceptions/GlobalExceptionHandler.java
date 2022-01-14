@@ -87,4 +87,20 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		
 	}
 	
+	
+	@ExceptionHandler(BadRequestException.class)
+	public final ResponseEntity<ExceptionResponse> handleBadRequest(BadRequestException ex, WebRequest request){
+		
+		var response = new ExceptionResponse();
+		response.setMessage(CAMPOS_INVALIDOS);
+		
+
+		var fields = ex.getFields();
+
+		log.error("Argumentos invalidos: {}", fields);
+		response.setFields(fields);
+		
+		return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+		
+	}
 }

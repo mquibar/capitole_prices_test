@@ -48,6 +48,7 @@ public class PriceEntityMapper {
 				.priceList(entity.getPriceList())
 				.product(product)
 				.priority(entity.getPriority())
+				.value(entity.getValue())
 				.curr(entity.getCurr())
 				.build();
 	}

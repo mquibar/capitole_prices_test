@@ -2,9 +2,7 @@ package com.quibar.test.prices.infra.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
-
-import com.google.common.collect.Sets;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -16,24 +14,23 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@EnableWebMvc
 public class SwaggerConfig {
 
 	
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
-				.apiInfo(apiInfo())
                 .select()
-				.apis(RequestHandlerSelectors.basePackage("ar.com.quibar.test.prices"))
+				.apis(RequestHandlerSelectors.basePackage("com.quibar.test.prices"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
-                .consumes(Sets.newHashSet(MediaType.APPLICATION_JSON_VALUE))
-				.enable(true);
+				.useDefaultResponseMessages(false);
 	}
 	private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Prueba Tecnica Spring Boot")
+                .title("Prueba Tecnica Prices")
                 .description("Autor: Manuel Quibar")
                 .version("0.0.1")
                 .build();
